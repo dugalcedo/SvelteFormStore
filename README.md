@@ -87,18 +87,23 @@ A Svelte 5 store for sanitizing and validating forms.
 #### Instance properties
 
 - FormStore.prototype.state
+
 type is FormStoreType (Svelte 5 state)
 
 - FormStore.prototype.sanitized
+
 type is Sanitized (Svelte 5 state)
 
 - FormStore.prototype.errors
+
 type is Map&lt;string, string&gt;
 
 #### Instance methods
 
 - FormStore.prototype.errMsg(key: string): string
+
 gets value from FormStore.prototype.errors but defaults to string if not found
 
 - FormStore.prototype.checkUnique(arr: any[], key: string, onMatch: MatchHandler)
+
 makes it easier to check for non-unique values
