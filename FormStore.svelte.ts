@@ -9,7 +9,7 @@ type FormStoreConfig<FD, Sanitized> = {
 
 class FormStore<FD, Sanitized = FD> {
     state: FD = $state({}) as FD;
-    errors: Record<string, string> = $state({});
+    errors: Map<string, string> = $state(new Map());
     sanitized: Sanitized = $state({}) as Sanitized;
     valid: boolean = true;
 
@@ -39,12 +39,16 @@ class FormStore<FD, Sanitized = FD> {
     }
 
     #resetErrors() {
-        this.errors = {};
+        this.errors = new Map();
         this.valid = false;
     }
 
     err(key: string, msg: string) {
-        this.errors[key] = msg
+        this.errors.set(key, msg)
+    }
+
+    errMsg(key: string): string {
+        return this.errors.get(key) || ""
     }
 }
 
